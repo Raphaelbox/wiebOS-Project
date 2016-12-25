@@ -16,7 +16,7 @@ namespace TextPad
         public TextPadControl()
         {
             InitializeComponent();
-            Opacity = 0.1;
+            Opacity = 0;
         }
 
         public UserControl ParentControl { get; set; }

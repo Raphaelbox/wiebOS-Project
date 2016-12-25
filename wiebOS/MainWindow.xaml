@@ -32,7 +32,11 @@
         </EventTrigger>
     </Window.Triggers>
     <Canvas x:Name="Main">
-        <Button x:Name="StartBTN" HorizontalAlignment="Left" Margin="-1,270,0,0" VerticalAlignment="Top" Width="43" Height="43" Click="StartBTN_Click">
+        <Button
+            x:Name="StartBTN" 
+            HorizontalAlignment="Left" Margin="-1,270,0,0" VerticalAlignment="Top" 
+            Width="43" Height="43" 
+            Click="StartBTN_Click">
             <Image x:Name="StartIMAGE" Source="bin/Design/Start.png"/>
         </Button>
         <Button x:Name="TextPadBTN" 
