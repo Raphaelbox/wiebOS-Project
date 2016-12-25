@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Animation;
 
 namespace wiebOS
@@ -8,8 +10,6 @@ namespace wiebOS
     /// </summary>
     public partial class MainWindow : Window
     {
-        private int StartCounter;
-
         public MainWindow()
         {
             InitializeComponent();
@@ -17,13 +17,19 @@ namespace wiebOS
 
         private void StartBTN_Click(object sender, RoutedEventArgs e)
         {
-            StartCounter++;
-            Start_BeginStoryboard.Storyboard.Stop();
+            var transformGroup = TextPadBTN.RenderTransform as TransformGroup;
+            TranslateTransform transform = transformGroup.Children[3] as TranslateTransform;
+            var x = transform.X;
+            var y = transform.Y;
+            if (y != 1)
+            {
+                StartBTN.IsEnabled = false;
+            }
         }
 
         private void TextPadBTN_Click(object sender, RoutedEventArgs e)
         {
-            TextPadBTN.IsEnabled = false;
+           TextPadController.Opacity = 1;
         }
     }
 }
