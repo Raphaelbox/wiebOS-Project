@@ -88,6 +88,7 @@ namespace TextPad
         {
             var SaveDialog = new SaveFileDialog();
             SaveDialog.Filter = "Text Files (.txt)|*.txt";
+            SaveDialog.Title = "Save the note";
             if (SaveDialog.ShowDialog() == true)
             {
                 var fileStream = new FileStream(SaveDialog.FileName, FileMode.Create);
