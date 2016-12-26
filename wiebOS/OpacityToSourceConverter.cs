@@ -8,13 +8,22 @@ using System.Windows.Data;
 
 namespace wiebOS
 {
-    class OpacityToEnabledConverter : IValueConverter
+    class OpacityToSourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             var opacity = (double) value;
 
-            return opacity < 0.1;
+            if (opacity <= 0.1)
+            {
+                value = ("bin/Design/TextPad.png");
+            }
+            else if (opacity >= 0.1)
+            {
+                value = ("bin/Design/TextPadBG.png");
+            }
+
+            return value;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

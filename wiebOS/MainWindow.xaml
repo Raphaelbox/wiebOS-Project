@@ -9,6 +9,7 @@
         Title="MainWindow" Height="350" Width="525">
     <Window.Resources>
         <local:OpacityToEnabledConverter x:Key="OpacityToEnabledConverter"/>
+        <local:OpacityToSourceConverter x:Key="OpacityToSourceConverter"/>
         <Storyboard x:Key="Start">
             <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="TextPadBTN">
                 <DiscreteDoubleKeyFrame KeyTime="0" Value="0"/>
@@ -23,7 +24,6 @@
         </Storyboard>
     </Window.Resources>
     <Window.Triggers>
-        <EventTrigger RoutedEvent="FrameworkElement.Loaded"/>
         <EventTrigger RoutedEvent="ButtonBase.Click" SourceName="TextPadBTN">
             <BeginStoryboard x:Name="TextPadOpen_BeginStoryboard" Storyboard="{StaticResource TextPadOpen}"/>
         </EventTrigger>
@@ -53,7 +53,7 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </Button.RenderTransform>
-            <Image x:Name="TextPadIMAGE" Source="bin/Design/TextPad.png"/>
+            <Image x:Name="TextPadIMAGE" Source="{Binding ElementName=TextPadController, Path=Opacity, Converter={StaticResource OpacityToSourceConverter}}"/>
         </Button>
         <Canvas Height="307" Canvas.Left="52" Canvas.Top="6" Width="455">
             <textPad:TextPadControl x:Name="TextPadController" Background="{x:Null}"/>
